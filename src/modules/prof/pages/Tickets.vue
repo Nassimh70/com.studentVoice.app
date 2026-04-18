@@ -70,7 +70,7 @@
                 <span v-if="msg.isProf" class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 dark:bg-blue-600/20 dark:text-blue-400 font-bold uppercase tracking-wider">Professeur</span>
                 <span class="text-[11px] text-muted-foreground ml-auto">{{ msg.time }}</span>
               </div>
-              <p class="text-sm text-foreground/80 leading-relaxed bg-slate-50 dark:bg-slate-900/50 p-3 rounded-2xl rounded-tl-none">{{ msg.content }}</p>
+              <p class="text-sm text-foreground/80 dark:text-white leading-relaxed bg-slate-50 dark:bg-slate-900/50 p-3 rounded-2xl rounded-tl-none">{{ msg.content }}</p>
             </div>
           </div>
         </div>
