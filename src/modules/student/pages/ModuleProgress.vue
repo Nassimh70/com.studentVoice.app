@@ -50,7 +50,7 @@
       <div
         v-for="module in modules"
         :key="module.id"
-        class="bg-white rounded-lg border border-gray-200 overflow-hidden"
+        class="bg-white dark:bg-slate-800 p-1 rounded-3xl border border-blue-100 dark:border-blue-900 shadow-lg shadow-blue-500/5 animate-slide-down"
       >
         <!-- Module Header -->
         <div class="p-6">

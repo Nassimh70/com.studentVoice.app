@@ -66,11 +66,11 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-3">
+    <div class="flex flex-col gap-3 ">
       <div
         v-for="suggestion in sortedSuggestions"
         :key="suggestion.id"
-        class="rounded-2xl p-5"
+        class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-blue-100 dark:border-blue-900 shadow-lg shadow-blue-500/5 animate-slide-down"
         style="background: var(--surface-card); box-shadow: 0 2px 12px var(--shadow-neutral-soft);"
       >
         <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">

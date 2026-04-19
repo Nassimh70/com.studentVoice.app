@@ -111,7 +111,7 @@
       <div
         v-for="course in courses"
         :key="course.id"
-        class="bg-white rounded-2xl border border-gray-200 overflow-hidden"
+        class="bg-white dark:bg-slate-800 p-2 rounded-3xl border border-blue-100 dark:border-blue-900 shadow-lg shadow-blue-500/5 animate-slide-down"
       >
         <!-- Course Header -->
         <div class="p-6 bg-white dark:bg-slate-800">

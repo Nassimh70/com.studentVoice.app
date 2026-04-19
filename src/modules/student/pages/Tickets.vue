@@ -90,7 +90,7 @@
         <div
           v-for="ticket in filteredTicketsData"
           :key="ticket.id"
-          class="bg-white dark:bg-slate-800 rounded-lg p-6 border border-gray-200 dark:border-slate-700 hover:shadow-md transition-all"
+          class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-blue-100 dark:border-blue-900 shadow-lg shadow-blue-500/5 animate-slide-down"
         >
           <div class="flex items-start justify-between gap-4 mb-4">
             <div class="flex-1">
@@ -122,7 +122,7 @@
             <button
               v-if="ticket.status !== 'Résolu' && ticket.status !== 'Fermé'"
               @click="openCommentForm(ticket)"
-              class="group flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 active:scale-95"
+              class="group flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-gray-500 hover:text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-900 dark:hover:text-blue-300 dark:active:scale-95"
             >
               <MessageCircleMore class="w-4 h-4 transition-transform duration-200 group-hover:rotate-12" />
               Commenter
@@ -252,10 +252,10 @@
                   :disabled="!newComment.trim()"
                   class="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 flex-shrink-0"
                   :class="newComment.trim()
-                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 hover:bg-indigo-700 active:scale-90'
+                    ? 'bg-blue-500 text-white shadow-md shadow-indigo-600/30 hover:bg-indigo-700 active:scale-90'
                     : 'bg-gray-100 text-gray-300 cursor-not-allowed'"
                 >
-                  <Send class="w-4 h-4" />
+                  <Send class="w-4 h-4 " />
                 </button>
               </div>
             </div>
