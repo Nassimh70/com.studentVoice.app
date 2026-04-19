@@ -120,7 +120,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { Lightbulb, ThumbsUp, Plus, User, Calendar } from 'lucide-vue-next'
-import CustomSelect from '../../../components/CustomSelect.vue'
+import CustomSelect from '../../../components/Shared/CustomSelect.vue'
 
 const showForm = ref(false)
 

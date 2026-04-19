@@ -276,7 +276,7 @@
 import { ref, computed } from 'vue'
 import { Ticket as TicketIcon, Plus, Search, Clock, AlertCircle, AlertTriangle, CheckCircle, MessageCircleMore, Lock, Eye, X, Send } from 'lucide-vue-next'
 import { useAuth } from '../../../composables/useAuth'
-import CustomSelect from '../../../components/CustomSelect.vue'
+import CustomSelect from '../../../components/Shared/CustomSelect.vue'
 
 const { isDelegate } = useAuth()
 

@@ -134,8 +134,8 @@
 </template>
 
 <script setup>
-import Notification from '../components/Notification.vue';
-import ThemeToggle from '../components/ThemeToggle.vue';
+import Notification from '../components/Shared/Notification.vue';
+import ThemeToggle from '../components/Shared/ThemeToggle.vue';
 import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
 import { 

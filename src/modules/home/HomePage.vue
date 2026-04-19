@@ -18,11 +18,11 @@
 
 <script setup>
 import { onMounted } from 'vue'
-import AppHeader from '../../components/AppHeader.vue'
-import HeroSection from '../../components/HeroSection.vue'
-import AboutSection from '../../components/AboutSection.vue'
-import HowItWorks from '../../components/HowItWorks.vue'
-import AppFooter from '../../components/AppFooter.vue'
+import AppHeader from '../../layouts/home/AppHeader.vue'
+import HeroSection from '../../layouts/home/HeroSection.vue'
+import AboutSection from '../../layouts/home/AboutSection.vue'
+import HowItWorks from '../../layouts/home/HowItWorks.vue'
+import AppFooter from '../../layouts/home/AppFooter.vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import { useRouter } from 'vue-router'
 const router = useRouter()

@@ -7,8 +7,8 @@ import ProfLayout from '../layouts/ProfLayout.vue';
 
 
 //Components root
-import Aide from '../components/Aide.vue';
-import Profile from '../components/Profile.vue';
+import Aide from '../components/Shared/Aide.vue';
+import Profile from '../components/Shared/Profile.vue';
 
 
 //Home wahi Login root
@@ -25,7 +25,7 @@ import AnnoncesPageProf from '../modules/prof/pages/AnnoncesPage.vue';
 
 
 //Admin root
-import SharedDashboard from '../components/Dashboard.vue';
+import SharedDashboard from '../components/Shared/Dashboard.vue';
 import TicketsPage from '../modules/admin/pages/TicketsPage.vue';
 import DeleguesPage from '../modules/admin/pages/DeleguesPage.vue';
 import UtilisateursPage from '../modules/admin/pages/UtilisateursPage.vue';

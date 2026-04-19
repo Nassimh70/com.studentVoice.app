@@ -148,7 +148,7 @@
 <script setup>
 import { ref, computed, reactive } from 'vue';
 import { UserCheck, Plus, Trash2, Mail, Phone, BookOpen, Star, CheckCircle, FileText } from 'lucide-vue-next';
-import CustomSelect from '../../../components/CustomSelect.vue'
+import CustomSelect from '../../../components/Shared/CustomSelect.vue'
 
 const filieres = ['Informatique', 'Mathématiques', 'Sciences', 'Physique', 'Chimie'];
 

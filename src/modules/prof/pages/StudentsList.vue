@@ -192,7 +192,7 @@
 import { ref, computed } from 'vue'
 import { Search, Mail, Phone, Plus } from 'lucide-vue-next'
 import { useStudents } from '../../../composables/useStudents'
-import CustomSelect from '../../../components/CustomSelect.vue'
+import CustomSelect from '../../../components/Shared/CustomSelect.vue'
 
 const { students, addStudent, deleteStudent: removeStudent } = useStudents()
 

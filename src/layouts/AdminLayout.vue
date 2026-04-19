@@ -128,8 +128,8 @@ import {
   Menu,
   X,
 } from 'lucide-vue-next';
-import Notification from '../components/Notification.vue';
-import ThemeToggle from '../components/ThemeToggle.vue';
+import Notification from '../components/Shared/Notification.vue';
+import ThemeToggle from '../components/Shared/ThemeToggle.vue';
 import { useAuth } from '../composables/useAuth';
 import adminFavicon from '../Asset/favicon.svg';
 

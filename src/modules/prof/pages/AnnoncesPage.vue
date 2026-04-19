@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import Annonce from '../../../components/Annonce.vue';
+import Annonce from '../../../components//Shared/Annonce.vue';
 </script>

@@ -29,7 +29,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Home, Info, Mail } from 'lucide-vue-next'
-import universityLogo from '../Asset/university-logo-bejaia.png'
+import universityLogo from '../../Asset/university-logo-bejaia.png'
 
 const navLinks = ref([
   { icon: Home, title: 'Accueil', link: '#hero' },

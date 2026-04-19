@@ -49,7 +49,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
-import LoginCard from '../../components/LoginCard.vue'
+import LoginCard from '../../components/Auth/LoginCard.vue'
 
 const router = useRouter()
 

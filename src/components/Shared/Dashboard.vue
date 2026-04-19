@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col lg:flex-row gap-6 h-full" style="--blue: #255fe3; --blue-dark: #1f54d2; --blue-deep: #1d3f95">
+  <div class="flex flex-col 2xl:flex-row gap-6 h-full" style="--blue: #255fe3; --blue-dark: #1f54d2; --blue-deep: #1d3f95">
     <!-- Left Column -->
     <div class="flex-1 flex flex-col gap-6 min-w-0">
       <!-- Stats Cards - 4 columns -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
         <!-- Total Réclamations (blue) -->
         <div
           class="relative rounded-2xl p-6 text-white shadow-xl shadow-indigo-600/30 total-reclamations-bg"
@@ -125,7 +125,7 @@
     </div>
 
     <!-- Right Column -->
-    <div class="w-full lg:w-[380px] flex-shrink-0 flex flex-col gap-6">
+    <div class="w-full 2xl:w-[380px] 2xl:min-w-[360px] flex-shrink-0 flex flex-col gap-6">
       <!-- Status Pie Chart -->
       <div class="bg-white rounded-2xl p-6 border border-gray-200">
         <div class="text-center mb-6">

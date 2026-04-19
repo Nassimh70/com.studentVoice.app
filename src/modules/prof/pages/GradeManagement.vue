@@ -169,7 +169,7 @@
 import { ref, computed } from 'vue'
 import { Plus, User, GraduationCap } from 'lucide-vue-next'
 import { useStudents } from '../../../composables/useStudents'
-import CustomSelect from '../../../components/CustomSelect.vue'
+import CustomSelect from '../../../components/Shared/CustomSelect.vue'
 
 const { students } = useStudents()
 

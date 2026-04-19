@@ -80,7 +80,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { Users, UserCheck, BookOpen, GraduationCap, Search } from 'lucide-vue-next';
-import CustomSelect from '../../../components/CustomSelect.vue'
+import CustomSelect from '../../../components/Shared/CustomSelect.vue'
 
 const avatarColors = ['#4F5CF5', '#818CF8', '#10B981', '#F59E0B', '#EF4444'];
 
