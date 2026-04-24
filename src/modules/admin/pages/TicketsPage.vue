@@ -88,96 +88,101 @@
     </div>
 
     <!-- Detail Modal -->
-    <div
-      v-if="showModal && selected"
-      class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4"
-      style="background: rgba(0,0,0,0.4)"
-      @click="showModal = false; selected = null"
-    >
-      <div
-        class="rounded-2xl p-4 sm:p-6 w-full max-w-md relative bg-white dark:bg-slate-800 shadow-2xl border border-gray-100 dark:border-slate-700"
-        @click.stop
-      >
-        <div class="flex items-start justify-between mb-4">
+<Transition name="modal">
+  <div
+    v-if="showModal && selected"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm"
+    @click.self="showModal = false; selected = null"
+  >
+    <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-lg w-full shadow-2xl flex flex-col border border-gray-100 dark:border-slate-700 overflow-hidden">
+
+      <!-- Header -->
+      <div class="px-6 pt-5 pb-4">
+        <div class="flex items-start justify-between gap-3 mb-3">
           <div>
-            <p class="text-xs mb-1 text-gray-400 dark:text-gray-500">{{ selected.id }}</p>
-            <h3 class="text-base font-bold text-gray-900 dark:text-white">{{ selected.objet }}</h3>
+            <p class="text-xs text-gray-400 mb-1">{{ selected.id }}</p>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ selected.objet }}</h3>
           </div>
-          <span
-            class="text-xs px-2 py-1 rounded-full"
-            :style="{
-              background: statusConfig[selected.status].bg,
-              color: statusConfig[selected.status].color,
-              fontWeight: 600,
+          <span class="text-xs px-2.5 py-1 rounded-full font-semibold border whitespace-nowrap"
+            :class="{
+              'bg-blue-50 text-blue-700 border-blue-200': selected.status === 'En attente',
+              'bg-green-50 text-green-700 border-green-200': selected.status === 'Acceptée',
+              'bg-red-50 text-red-700 border-red-200': selected.status === 'Refusée',
             }"
-          >
-            {{ selected.status }}
-          </span>
+          >{{ selected.status }}</span>
         </div>
-
-        <div class="flex flex-col gap-2 mb-4 text-xs sm:text-sm">
-          <div class="flex justify-between">
-            <span class="text-gray-400 dark:text-gray-500">Étudiant</span>
-            <span class="truncate ml-2 text-right font-medium text-gray-900 dark:text-white">{{ selected.etudiant }}</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-gray-400 dark:text-gray-500">Filière</span>
-            <span class="truncate ml-2 text-right font-medium text-gray-900 dark:text-white">{{ selected.filiere }}</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-gray-400 dark:text-gray-500">Délégué</span>
-            <span class="truncate ml-2 text-right font-medium text-gray-900 dark:text-white">{{ selected.delegue }}</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-gray-400 dark:text-gray-500">Date</span>
-            <span class="truncate ml-2 text-right font-medium text-gray-900 dark:text-white">{{ selected.date }}</span>
-          </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="chip">{{ selected.etudiant }}</span>
+          <span class="chip">{{ selected.filiere }}</span>
+          <span class="chip">{{ selected.delegue }}</span>
+          <span class="chip">{{ selected.date }}</span>
         </div>
+      </div>
 
-        <div
-          class="rounded-xl p-2 sm:p-3 mb-4 text-xs sm:text-sm bg-gray-50 dark:bg-slate-900 text-gray-600 dark:text-gray-300 border border-gray-100 dark:border-slate-700"
-          style="line-height: 1.6"
-        >
+      <div class="h-px bg-gray-100 dark:bg-slate-700 mx-6" />
+
+      <!-- Body -->
+      <div class="px-6 py-4 flex flex-col gap-4 overflow-y-auto max-h-[50vh]">
+
+        <!-- Description -->
+        <div class="border-l-2 border-indigo-400/50 pl-3 text-sm text-gray-600 dark:text-gray-300 leading-relaxed rounded-none">
           {{ selected.description }}
         </div>
 
-        <template v-if="selected.status === 'En attente'">
-          <div class="mb-4">
-            <label class="block text-xs sm:text-sm font-medium mb-2 text-gray-900 dark:text-white">Motif de décision (optionnel)</label>
-            <textarea
-              v-model="motif"
-              placeholder="Expliquez brièvement la raison de votre décision..."
-              class="w-full rounded-xl p-2 sm:p-3 text-xs sm:text-sm outline-none resize-none border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500/20"
-              style="min-height: 80px"
-            />
+        <!-- Fil de discussion -->
+        <div v-if="selected.commentaires?.length">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Fil de discussion</p>
+          <div v-for="(c, i) in selected.commentaires" :key="c.id" class="flex gap-3">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold text-white"
+                :style="{ background: avatarColor(c.auteur) }">
+                {{ c.auteur.charAt(0) }}
+              </div>
+              <div v-if="i < selected.commentaires.length - 1" class="w-px flex-1 bg-gray-100 dark:bg-slate-700 mt-1" />
+            </div>
+            <div class="flex-1 pb-3">
+              <div class="flex items-baseline gap-2 mb-1">
+                <span class="text-sm font-medium text-gray-900 dark:text-white">{{ c.auteur }}</span>
+                <span class="text-xs text-gray-400">{{ c.date }}</span>
+              </div>
+              <div class="bg-gray-50 dark:bg-slate-900/50 border border-gray-100 dark:border-slate-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                {{ c.texte }}
+              </div>
+            </div>
           </div>
-          <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
-            <button
-              @click="handleAction(selected.id, 'Acceptée')"
-              class="flex-1 py-2 sm:py-2.5 rounded-xl text-white text-xs sm:text-sm transition-all hover:opacity-90 active:scale-95"
-              style="background: linear-gradient(135deg, #128c3e 0%, #16A34A 50%, #0f7a35 100%); font-weight: 600; box-shadow: 0 2px 8px rgba(22,163,74,0.35)"
-            >
+        </div>
+      </div>
+
+      <!-- Footer : En attente → actions, sinon fermer -->
+      <div class="border-t border-gray-100 dark:border-slate-700 px-6 py-4 bg-gray-50/50 dark:bg-slate-900/50">
+        <template v-if="selected.status === 'En attente'">
+          <p class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Motif de décision</p>
+          <textarea
+            v-model="motif"
+            placeholder="Expliquez brièvement la raison de votre décision..."
+            class="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm text-gray-900 dark:text-white px-3 py-2 resize-none outline-none focus:ring-2 focus:ring-indigo-500/20"
+            style="min-height: 70px"
+          />
+          <div class="flex gap-2 mt-3">
+            <button @click="handleAction(selected.id, 'Acceptée')"
+              class="flex-1 py-2 rounded-xl text-white text-sm font-semibold bg-green-600 hover:bg-green-700 active:scale-95 transition-all">
               ✓ Accepter
             </button>
-            <button
-              @click="handleAction(selected.id, 'Refusée')"
-              class="flex-1 py-2 sm:py-2.5 rounded-xl text-white text-xs sm:text-sm transition-all hover:opacity-90 active:scale-95"
-              style="background: linear-gradient(135deg, #c41e1e 0%, #DC2626 50%, #a51b1b 100%); font-weight: 600; box-shadow: 0 2px 8px rgba(220,38,38,0.35)"
-            >
+            <button @click="handleAction(selected.id, 'Refusée')"
+              class="flex-1 py-2 rounded-xl text-white text-sm font-semibold bg-red-600 hover:bg-red-700 active:scale-95 transition-all">
               ✗ Refuser
             </button>
           </div>
         </template>
-
-        <button
-          v-if="selected.status !== 'En attente'"
-          @click="showModal = false; selected = null"
-          class="w-full py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors"
-        >
+        <button v-else @click="showModal = false; selected = null"
+          class="w-full py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-500 dark:text-gray-400 hover:bg-gray-50 transition-colors">
           Fermer
         </button>
       </div>
+
     </div>
+  </div>
+</Transition>
   </div>
 </template>
 
@@ -213,6 +218,10 @@ const filtered = computed(() =>
   filter.value === 'Toutes' ? reclamations.value : reclamations.value.filter(r => r.status === filter.value)
 );
 
+function avatarColor(name) {
+  const colors = ['#6366F1','#0891B2','#16A34A','#D97706','#DC2626','#9333EA']
+  return colors[name.charCodeAt(0) % colors.length]
+}
 const chips = computed(() => [
   { label: 'Total', value: reclamations.value.length, color: '#255fe3', bg: '#DEE2F0', gradient: 'linear-gradient(135deg, #1f54d2 0%, #255fe3 50%, #1d3f95 100%)', shadow: '0 2px 8px rgba(37,95,227,0.35)', filter: 'Toutes' },
   { label: 'En attente', value: reclamations.value.filter(r => r.status === 'En attente').length, color: '#CA8A04', bg: '#FEF9C3', gradient: 'linear-gradient(135deg, #b47d04 0%, #CA8A04 50%, #a16e03 100%)', shadow: '0 2px 8px rgba(202,138,4,0.35)', filter: 'En attente' },
@@ -234,3 +243,24 @@ const openDetail = (r) => {
   motif.value = '';
 };
 </script>
+
+<style scoped>
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 0.5px solid #e5e7eb;
+  background: #f9fafb;
+  color: #6b7280;
+}
+
+.dark .chip {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+</style>

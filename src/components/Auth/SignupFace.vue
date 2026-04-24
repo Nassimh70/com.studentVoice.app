@@ -51,7 +51,7 @@
       </p>
     </div>
 
-    <div class="px-7 py-6">
+    <div class="px-8 py-6 ">
       <!-- Role Selector -->
       <div class="mb-5">
         <p class="text-xs uppercase mb-2.5 text-slate-500 font-semibold tracking-[0.07em]">
@@ -100,34 +100,40 @@
 
           <!-- Role-specific fields -->
           <template v-if="role === 'etudiant'">
-            <Field id="numEtu" label="N° Étudiant" v-model="numEtudiant" placeholder="" :icon="IconId" />
-            <Field
-              id="filiere"
-              label="Filière / Programme"
-              v-model="filiere"
-              placeholder=""
-              :icon="IconBook"
-            />
+            <div class="grid grid-cols-2 gap-3">
+              <Field id="numEtu" label="N° Étudiant" v-model="numEtudiant" placeholder="" :icon="IconId" />
+              <Field
+                id="filiere"
+                label="Filière / Programme"
+                v-model="filiere"
+                placeholder=""
+                :icon="IconBook"
+              />
+            </div>
           </template>
           <template v-else-if="role === 'enseignant'">
-            <Field
-              id="dept"
-              label="Département"
-              v-model="departement"
-              placeholder=""
-              :icon="IconBuild"
-            />
-            <Field
-              id="grade"
-              label="Grade / Spécialité"
-              v-model="grade"
-              placeholder=""
-              :icon="IconStar"
-            />
+            <div class="grid grid-cols-2 gap-3">
+              <Field
+                id="dept"
+                label="Département"
+                v-model="departement"
+                placeholder=""
+                :icon="IconBuild"
+              />
+              <Field
+                id="grade"
+                label="Grade / Spécialité"
+                v-model="grade"
+                placeholder=""
+                :icon="IconStar"
+              />
+            </div>
           </template>
 
-          <PasswordField id="signup-password" label="Mot de passe" v-model="password" />
-          <PasswordField id="confirm-password" label="Confirmer le mot de passe" v-model="confirm" />
+          <div class="grid grid-cols-2 gap-3">
+            <PasswordField id="signup-password" label="Mot de passe" v-model="password" />
+            <PasswordField id="confirm-password" label="Confirmer mot de passe" v-model="confirm" />
+          </div>
 
           <!-- Password match indicator -->
           <div v-if="confirm.length > 0" class="flex items-center gap-2 text-xs" :style="{ color: confirm === password ? '#16a34a' : '#dc2626' }">

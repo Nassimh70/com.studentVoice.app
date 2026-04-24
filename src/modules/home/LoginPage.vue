@@ -16,9 +16,7 @@
         left: '32px'
       }"
     >
-      <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-      </svg>
+      <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform duration-300" />
       <span>Accueil</span>
     </button>
 
@@ -49,6 +47,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { ArrowLeft } from 'lucide-vue-next'
 import LoginCard from '../../components/Auth/LoginCard.vue'
 
 const router = useRouter()
